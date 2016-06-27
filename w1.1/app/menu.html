@@ -25,8 +25,18 @@
     <div class="container">
         <div class="row row-content" ng-controller="menuController as controller">
             <div class="col-xs-12">
-                <ul class="media-list">
-                    <li class="media" ng-repeat="dish in controller.dishes">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ng-class="{active:controller.isSelected(0)}">
+                        <a aria-controls="all menu" role="tab" ng-click="controller.select(0)">The Menu</a></li>
+                    <li role="presentation" ng-class="{active:controller.isSelected(1)}">
+                        <a aria-controls="appetizers" role="tab" ng-click="controller.select(1)">Appetizers</a></li>
+                    <li role="presentation" ng-class="{active:controller.isSelected(2)}">
+                        <a aria-controls="mains" role="tab" ng-click="controller.select(2)">Mains</a></li>
+                    <li role="presentation" ng-class="{active:controller.isSelected(3)}">
+                        <a aria-controls="desserts" role="tab" ng-click="controller.select(3)">Desserts</a></li>
+                </ul>
+                <ul class="media-list tab-pane fade in active">
+                    <li class="media" ng-repeat="dish in controller.dishes | filter:controller.filterText">
                         <div class="media-left media-middle">
                             <a href="#">
                             <img class="media-object img-thumbnail"
@@ -48,8 +58,13 @@
 <script src="../bower_components/angular/angular.min.js"></script>
 <script>
     var app = angular.module('confusionApp', []);
+    var options = ['', 'appetizer', 'mains', 'dessert'];
+
     app.controller('menuController', function () {
-        dishes=[
+        this.tab = 0;
+        this.filterText = options[this.tab];
+
+        dishes = [
             {
                 name:'Uthapizza',
                 image: 'images/uthapizza.png',
@@ -87,7 +102,16 @@
                 comment: ''
             }
         ];
-        this.dishes=dishes;
+        this.dishes = dishes;
+
+        this.select = function (index) {
+            this.tab = index;
+            this.filterText = options[this.tab];
+        }
+
+        this.isSelected = function (index) {
+            return index === this.tab;
+        }
     });
 </script>
 </body>
