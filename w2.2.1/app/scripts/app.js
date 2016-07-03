@@ -3,9 +3,9 @@
 var options = ['', 'appetizer', 'mains', 'dessert'];
 
 var app = angular.module('confusionApp', []);
-app.controller('menuController', function () {
-    this.tab = 0;
-    this.filterText = options[this.tab];
+app.controller('MenuController', ['$scope', function ($scope) {
+    $scope.tab = 0;
+    $scope.filterText = options[$scope.tab];
 
     var dishes = [
         {
@@ -45,14 +45,14 @@ app.controller('menuController', function () {
             comment: ''
         }
     ];
-    this.dishes = dishes;
+    $scope.dishes = dishes;
 
-    this.select = function (index) {
-        this.tab = index;
-        this.filterText = options[this.tab];
+    $scope.select = function (index) {
+        $scope.tab = index;
+        $scope.filterText = options[$scope.tab];
     };
 
-    this.isSelected = function (index) {
-        return index === this.tab;
+    $scope.isSelected = function (index) {
+        return index === $scope.tab;
     };
-});
+}]);

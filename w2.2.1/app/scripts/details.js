@@ -1,7 +1,7 @@
 'use strict';
 
 var app = angular.module('confusionApp',[]);
-app.controller('dishDetailController', function() {
+app.controller('DishDetailController', ['$scope', function($scope) {
     var dish = {
         name:'Uthapizza',
         image: 'images/uthapizza.png',
@@ -42,9 +42,9 @@ app.controller('dishDetailController', function() {
             }  
         ]
     };
-    this.dish = dish;
-    this.range = function(n) {
+    $scope.dish = dish;
+    $scope.range = function(n) {
         return new Array(n);
     };
-    this.orderBy = "rating";
-});
+    $scope.orderBy = "rating";
+}]);

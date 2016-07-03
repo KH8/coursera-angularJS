@@ -28,29 +28,29 @@
 
 <body>
     <div class="container">
-        <div class="row row-content" ng-controller="dishDetailController as controller">
+        <div class="row row-content" ng-controller="DishDetailController">
             <div class="col-xs-12">
                 <div class="media">
                     <div class="media-left media-middle">
                         <a href="#">
-                            <img class="media-object img-thumbnail"ng-src={{controller.dish.image}} alt="{{controller.dish.name}}">
+                            <img class="media-object img-thumbnail"ng-src={{dish.image}} alt="{{dish.name}}">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h2 class="media-heading">{{controller.dish.name}}
-                            <span class="label label-danger">{{controller.dish.label}}</span>
-                            <span class="badge">{{controller.dish.price | currency}}</span>
+                        <h2 class="media-heading">{{dish.name}}
+                            <span class="label label-danger">{{dish.label}}</span>
+                            <span class="badge">{{dish.price | currency}}</span>
                         </h2>
-                        <p>{{controller.dish.description}}</p>
+                        <p>{{dish.description}}</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-9 col-xs-offset-1">
                 <div class="col-xs-12">
-                    <p>Order by: <input type="text" ng-model="controller.orderBy"></p>
+                    <p>Order by: <input type="text" ng-model="orderBy"></p>
                 </div>
-                <blockquote ng-repeat="comment in controller.dish.comments | orderBy:controller.orderBy">
-                    <span class="fa fa-star-o" data-rating="{{comment.rating}}" ng-repeat="i in controller.range(comment.rating) track by $index"></span>
+                <blockquote ng-repeat="comment in dish.comments | orderBy:orderBy">
+                    <span class="fa fa-star-o" data-rating="{{comment.rating}}" ng-repeat="i in range(comment.rating) track by $index"></span>
                     <p>{{comment.comment}}</p>
                     <footer>{{comment.date | date:'yyyy-MM-dd HH:mm:ss'}} <cite title="Author">{{comment.author}}</cite></footer>
                 </blockquote>
