@@ -1,4 +1,5 @@
 'use strict';
+
 var app = angular.module('confusionApp',[]);
 app.controller('dishDetailController', function() {
     var dish = {
