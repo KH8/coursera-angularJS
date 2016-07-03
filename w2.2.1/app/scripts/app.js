@@ -6,6 +6,7 @@ var app = angular.module('confusionApp', []);
 app.controller('MenuController', ['$scope', function ($scope) {
     $scope.tab = 0;
     $scope.filterText = options[$scope.tab];
+    $scope.showDetails = false;
 
     var dishes = [
         {
@@ -54,5 +55,9 @@ app.controller('MenuController', ['$scope', function ($scope) {
 
     $scope.isSelected = function (index) {
         return index === $scope.tab;
+    };
+
+    $scope.toggleShowDetails = function () {
+        $scope.showDetails = !$scope.showDetails;
     };
 }]);
