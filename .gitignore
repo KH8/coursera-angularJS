@@ -3,3 +3,4 @@
 */app/styles
 */node_modules
 */dist
+*/.tmp
