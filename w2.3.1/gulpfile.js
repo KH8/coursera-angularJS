@@ -79,6 +79,6 @@ gulp.task('sync', ['watch'], function () {
 });
 
 gulp.task('watch', ['default'], function () {
-    gulp.watch('{app/scripts/**/*.js,app/styles/**/*.css,app/**/*.html}', ['usemin']);
+    gulp.watch('{app/scripts/**/*.js,app/styles/**/*.css,app/**/*.html}', ['default']);
     gulp.watch('app/images/**/*', ['imagemin']);
 });
