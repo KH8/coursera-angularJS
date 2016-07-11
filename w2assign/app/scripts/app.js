@@ -64,5 +64,9 @@ app.controller('DishCommentController', ['$scope', function($scope) {
         $scope.newComment.date = new Date().toISOString();
         $scope.dish.comments.push($scope.newComment);
         $scope.newComment = getNewComment();
+        $scope.commentForm.$setPristine();
+    };
+    $scope.setRating = function (rating) {
+        $scope.newComment.rating = rating;
     };
 }]);
